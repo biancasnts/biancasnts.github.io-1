@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do dia</title>
+    <style>
+        p {
+            font: 20pt;
+        }
+        body {
+            text-align: center;
+            font: normal 12pt Calibri;
+            background: url(inicio.png);
+            background-size: cover;
+            height: 100vh;
+            width: 100vw;
+            margin-top: 50px;
+            color: white;
+            text-shadow: rgb(54, 62, 180) 3px 2px 3px;
+        }
+        li {
+            list-style-type: none;
+            
+        }
+        #res {
+            font: bold 30pt TimesNewRoman;
+            margin-top: 90px;
+        }
+    </style>
+</head>
+<body id='fundo'>
+   
+   <p><strong>Olá! Para testar a resposta em relação à hora do dia desejada, siga as instruções:</strong></p>
+   <ul>
+       <li>- Use números inteiros entre 0 e 23</li>
+       <li>- Não use minutos</li>
+       <li>- Use seu horário atual para um resultado mais divertido</li>
+   </ul>
+    <input type="text" name="horario" id="horario">
+   <input type="button" value="Testar" onclick="testar()">
+    <div id="res">
+
+    </div>
+    <script>
+        function testar() {
+            var hora = window.document.getElementById('horario').value
+            var res = window.document.querySelector('div#res')
+            res.innerHTML = '...'
+            if (hora <= 4) {
+                res.innerHTML = `São ${hora} horas. Boa madrugada!`
+                document.getElementById('fundo').style.background = 'url(madrugada.png)' //Mudando a imagem do fundo e mensagem
+            } else if (hora < 12) {
+                res.innerHTML = `São ${hora} horas. Bom dia!`
+                document.getElementById('fundo').style.background = 'url(dia.png)'
+            } else if (hora <= 18) {
+                res.innerHTML = `São ${hora} horas. Boa tarde!`
+                document.getElementById('fundo').style.background = 'url(tarde.png)'
+            } else if (hora <= 23) {
+                res.innerHTML = `São ${hora} horas. Boa noite!`
+                document.getElementById('fundo').style.background = 'url(noite.png)'
+            } else {
+                res.innerHTML = 'Hora inválida.'
+            }
+        }
+    </script>
+</html>
